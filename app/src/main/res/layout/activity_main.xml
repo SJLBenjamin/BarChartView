@@ -9,7 +9,7 @@
 
     <com.example.barchartview.view.CircleView
         android:layout_width="300dp"
-        android:layout_height="300dp" />
+        android:layout_height="600dp" />
     <com.example.barchartview.view.LineChartView
         android:visibility="gone"
         android:layout_width="match_parent"
