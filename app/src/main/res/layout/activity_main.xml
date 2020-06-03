@@ -7,7 +7,48 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <com.example.barchartview.view.SwipeCards
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:background="#00ff00"
+                android:gravity="center"
+                android:text="嘿"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:background="#0000ff"
+                android:gravity="center"
+                android:text="嘿"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:cardCornerRadius="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="30sp"
+                android:background="#ff0000"
+                android:gravity="center"
+                android:text="嘿"/>
+        </androidx.cardview.widget.CardView>
+    </com.example.barchartview.view.SwipeCards>
     <com.example.barchartview.view.CircleView
+        android:visibility="gone"
         android:layout_width="300dp"
         android:layout_height="300dp" />
     <com.example.barchartview.view.LineChartView
