@@ -123,7 +123,7 @@ public class SwipeCards extends ViewGroup {
             int finalLeft = mCenterX - releasedChild.getWidth() / 2;
             int indexOfChild = indexOfChild(releasedChild);
             int finalTop = mCenterY - releasedChild.getHeight() / 2 + mCardGap * (getChildCount() - indexOfChild);
-            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//指定位置重新画形状,此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度
+            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//移动到指定位置(是一个滑动的过程),此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度
             //smoothSlideViewTo因为最多只能旋转60度,不能实现View完全消失,所以还需要调用重绘,
             // 所以需要等动画完成后再去invalidate(),此处的invalidate作用只是去调用computeScroll方法,computeScroll中去实现动画结束后,重绘
             invalidate();
@@ -132,7 +132,7 @@ public class SwipeCards extends ViewGroup {
         private void animateToRight(View releasedChild) {
             int finalLeft = getWidth() + mCenterX*2;
             int finalTop = releasedChild.getTop();
-            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//指定位置重新画形状,此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度
+            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//移动到指定位置(是一个滑动的过程),此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度
             //smoothSlideViewTo因为最多只能旋转60度,不能实现View完全消失,所以还需要调用重绘
             // 所以需要等动画完成后再去invalidate(),此处的invalidate作用只是去调用computeScroll方法,computeScroll中去实现动画结束后,重绘
             invalidate();
@@ -141,7 +141,7 @@ public class SwipeCards extends ViewGroup {
         private void animateToLeft(View releasedChild) {
             int finalLeft = -getWidth();//左上角坐标为-本身宽度,这样子就不可见了
             int finalTop = 0;//距离为0
-            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//指定位置重新画形状,此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度,此方法不会重新调用onDraw
+            mViewDragHelper.smoothSlideViewTo(releasedChild, finalLeft, finalTop);//移动到指定位置(是一个滑动的过程),此方法会调用onViewPositionChanged方法,而onViewPositionChanged中最多只可以旋转60度,此方法不会重新调用onDraw
             //smoothSlideViewTo因为最多只能旋转60度,不能实现View完全消失,所以还需要调用重绘
             // 所以需要等动画完成后再去invalidate(),此处的invalidate作用只是去调用computeScroll方法,computeScroll中去实现动画结束后,重绘
             invalidate();
