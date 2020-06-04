@@ -56,8 +56,8 @@ public class SwipeCards extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-       measureChildren(widthMeasureSpec,heightMeasureSpec);
-       super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+       measureChildren(widthMeasureSpec,heightMeasureSpec);//此处的孩子因为在布局中已经写死了,所以直接调用measureChildren即可
+         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     //滑动计算,当滑动一段时间后,手指松开就会调用此方法
