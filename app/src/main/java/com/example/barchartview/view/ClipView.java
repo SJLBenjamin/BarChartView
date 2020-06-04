@@ -10,7 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-
+/*
+* 裁减
+* */
 public class ClipView extends View {
     Paint mPaint;
 

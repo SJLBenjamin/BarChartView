@@ -17,7 +17,9 @@ import androidx.annotation.Nullable;
 import com.example.barchartview.R;
 
 import java.util.Calendar;
-
+/*
+* 自定义动画圆环
+* */
 public class CircleView extends View {
     Paint mCirclePaint;
     Paint mBackgroundPaint;

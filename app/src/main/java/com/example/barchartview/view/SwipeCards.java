@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.customview.widget.ViewDragHelper;
 import androidx.customview.widget.ViewDragHelper.Callback;
-
+/*
+* 自定义滑动卡片
+* */
 public class SwipeCards extends ViewGroup {
     int mCenterX;
     int mCenterY;

@@ -18,7 +18,9 @@ import com.example.barchartview.utils.Dot;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
+/*
+* 自定义折线图
+* */
 public class LineChartView extends View {
     List<Dot> mList = new ArrayList<Dot>();
     Paint mPaint = new Paint();
