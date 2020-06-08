@@ -7,6 +7,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -39,7 +40,6 @@ public class LineChartView extends View {
     }
 
     int circleRadius = 15;//设置画的圆弧半径
-
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawPath(mPath, mPaint);//在画布上画线段
@@ -69,6 +69,10 @@ public class LineChartView extends View {
         setPadding(circleRadius * 2, circleRadius * 2, circleRadius * 2, circleRadius * 2);
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        return super.dispatchTouchEvent(event);
+    }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
