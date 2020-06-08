@@ -42,8 +42,6 @@ public class MyView extends View {
     }
 
 
-
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         return  super.dispatchTouchEvent(event);
@@ -51,12 +49,21 @@ public class MyView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
-        if(event.getAction()==MotionEvent.ACTION_DOWN){
-            Log.d(TAG,"onTouchEvent");
+        getParent().requestDisallowInterceptTouchEvent(true);//请求父控件不要拦截事件
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                Log.d(TAG,"ACTION_DOWN");
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Log.d(TAG,"ACTION_MOVE");
+                break;
+            case MotionEvent.ACTION_UP:
+                Log.d(TAG,"ACTION_UP");
+                break;
         }
-        getParent().requestDisallowInterceptTouchEvent(true);
-        Log.d(TAG,"onTouchEvent");
+        //Log.d(TAG,"other thing");
+        //Log.d(TAG,"onTouchEvent");
         return true;
     }
+
 }

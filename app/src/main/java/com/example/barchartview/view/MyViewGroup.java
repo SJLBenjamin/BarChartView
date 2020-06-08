@@ -33,11 +33,10 @@ public class MyViewGroup extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                return true;
+            case MotionEvent.ACTION_DOWN://如果down方法都拦截的话,子控件就不会收到任何事件,所以不能拦截down方法
+                return false;
             default:
-                return super.onInterceptTouchEvent(ev);
-
+                return true;
         }
     }
 
@@ -49,7 +48,7 @@ public class MyViewGroup extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        measureChildren(widthMeasureSpec,heightMeasureSpec);
+        measureChildren(widthMeasureSpec,heightMeasureSpec);//对子控件进行测量
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
