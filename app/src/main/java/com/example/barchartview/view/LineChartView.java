@@ -50,7 +50,6 @@ public class LineChartView extends View {
         }
     }
 
-
     int mBarMax;//Bar中最大值
 
     private void initData() {
