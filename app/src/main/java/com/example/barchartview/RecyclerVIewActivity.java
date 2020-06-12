@@ -30,16 +30,16 @@ public class RecyclerVIewActivity extends AppCompatActivity {
 
     private void initView() {
         rv = (RecyclerView) findViewById(R.id.rv);
-       /* //必须设置LinearLayoutManager,否则不能显示,此处设置的是线性布局
+        //必须设置LinearLayoutManager,否则不能显示,此处设置的是线性布局
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.VERTICAL);//水平方向
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);//竖直方向*/
+        layoutManager.setOrientation(RecyclerView.VERTICAL);//竖直方向
+       // layoutManager.setOrientation(RecyclerView.HORIZONTAL);//水平方向
 
       /* //网格布局
         GridLayoutManager layoutManager = new GridLayoutManager(this,3);*/
 
         //瀑布流布局,StaggeredGridLayoutManager传入2个参数,第一个是布局的列数,第二个是布局的排列方向。布局文件的LinearLayout的宽度设为match_parent是因为瀑布流的宽度是 根据布局的列数来自动适配的,而不是固定值 。(GridLayoutManager也是根据布局的列数来自动适配的）
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+       // StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         rv.setLayoutManager(layoutManager);
     }
 
@@ -56,7 +56,6 @@ public class RecyclerVIewActivity extends AppCompatActivity {
            }else {
                mFruitList.add(new Fruit(i+"",R.mipmap.ic_launcher));
            }
-
         }
         rv.setAdapter(fruitAdapter);
     }

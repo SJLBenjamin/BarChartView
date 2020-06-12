@@ -30,13 +30,16 @@ public class MyViewGroup extends ViewGroup {
         super.draw(canvas);
     }
 
+
+
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN://如果down方法都拦截的话,子控件就不会收到任何事件,所以不能拦截down方法
+                super.onInterceptTouchEvent(ev);
                 return false;
             default:
-                return true;
+                return true;//返回true代表view接收不到此事件,除非子控件要求父控件别拦截
         }
     }
 
@@ -45,6 +48,7 @@ public class MyViewGroup extends ViewGroup {
         Log.d(TAG,"onTouchEvent");
         return super.onTouchEvent(event);
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -63,7 +67,5 @@ public class MyViewGroup extends ViewGroup {
             child.layout(left, top, right, bottom);
         }
     }
-
-
 
 }
