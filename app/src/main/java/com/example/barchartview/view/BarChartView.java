@@ -136,6 +136,7 @@ public class BarChartView extends View {
                 rectF.set(bar.getLeft(), bar.getTop(), bar.getRight(), bar.getBottom());
                 canvas.drawRoundRect(rectF, mRadius, mRadius, mBarPaint);
                 mBarPaint.setColor(getResources().getColor(R.color.colorAccent));//设置柱形颜色
+
                 //canvas.drawRect();
         }
     }

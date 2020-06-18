@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlowLayout"><!--自定义属性名称-->
+        <attr name="android:gravity" /><!--使用系统gravity属性-->
+        <attr name="horizonSpacing" format="dimension|reference"/><!--自定义属性,名字为horizonSpacing,类型为dimension或者reference-->
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_Layout">
+        <attr name="android:layout_gravity" />
+    </declare-styleable>
+</resources>

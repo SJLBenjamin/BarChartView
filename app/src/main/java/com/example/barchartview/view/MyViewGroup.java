@@ -30,8 +30,6 @@ public class MyViewGroup extends ViewGroup {
         super.draw(canvas);
     }
 
-
-
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         switch (ev.getAction()){
@@ -52,8 +50,10 @@ public class MyViewGroup extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        measureChildren(widthMeasureSpec,heightMeasureSpec);//对子控件进行测量
+        //1.测量自身,类图,时序图
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        //对子控件进行测量
+        measureChildren(widthMeasureSpec,heightMeasureSpec);
     }
 
     @Override
