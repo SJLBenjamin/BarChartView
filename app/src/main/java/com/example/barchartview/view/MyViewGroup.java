@@ -8,6 +8,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+/*
+* 此类是自定义ViewGroup实现分发事件给子控件
+* */
 public class MyViewGroup extends ViewGroup {
     String TAG ="MyViewGroup";
     Context mContext;
@@ -41,11 +44,14 @@ public class MyViewGroup extends ViewGroup {
         }
     }
 
+
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Log.d(TAG,"onTouchEvent");
         return super.onTouchEvent(event);
     }
+
 
 
     @Override
