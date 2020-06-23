@@ -5,10 +5,12 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
-import android.widget.Scroller;
+import android.widget.OverScroller;
+
 
 import androidx.core.view.ViewConfigurationCompat;
 
@@ -32,7 +34,11 @@ public class FlowLayout extends ViewGroup {
     boolean scrollable =false;//判断需不需要滑动,如果测量的高度大于流式布局的高度,那么才需要滑动
     int realH = 0;//表示所有子View的累加高度,即内容高度
     int measureHeight =0;//代表流式布局的测量高度
-    Scroller mScroller;//滑动工具类
+    private OverScroller mScroller;//滑动工具类
+    private VelocityTracker mVelocityTracker;//滑动惯性类
+    private int mMinimumVelocity;
+    private int mMaximumVelocity;
+
 
     public FlowLayout(Context context) {
         super(context);
@@ -48,7 +54,27 @@ public class FlowLayout extends ViewGroup {
         //获取最小的滑动距离
         mScaledPagingTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(viewConfiguration);
 
-        mScroller = new Scroller(context);//初始化滑动类
+        //得到最小和最大的滑动速度,即惯性
+        mMinimumVelocity = viewConfiguration.getScaledMinimumFlingVelocity();
+        mMaximumVelocity = viewConfiguration.getScaledMaximumFlingVelocity();
+
+        mScroller = new OverScroller(context);//初始化滑动类
+    }
+
+    void initVelocityTracker(){
+        if(mVelocityTracker==null){
+            mVelocityTracker = VelocityTracker.obtain();//实例化
+        }
+    }
+
+    //draw方法会调用此方法
+    @Override
+    public void computeScroll() {
+        super.computeScroll();
+        if(mScroller.computeScrollOffset()){//如果手指还在滑动
+            scrollTo(0,mScroller.getCurrY());//滑动到当前手指的位置
+            postInvalidate();//如果没有画完等待画完继续画,如果用invalidate就会产生问题,异步线程,所以可以理解为把他加到队列中去,等待主线程上一次的ui执行完
+        }
     }
 
     @Override
@@ -115,6 +141,8 @@ public class FlowLayout extends ViewGroup {
         if(!scrollable){//如果不需要滑动
             return super.onTouchEvent(event);
         }
+        //初始化惯性对象
+        initVelocityTracker();
         float eventY = event.getY();
         switch (event.getAction()){
            case MotionEvent.ACTION_DOWN:
@@ -125,9 +153,20 @@ public class FlowLayout extends ViewGroup {
                break;
            case MotionEvent.ACTION_MOVE:
                float dy=mLastInterceptY-eventY;//本次手势滑动了多大距离
-               int oldScrollY = getScrollY();//已经偏移了的距离
+ //              int oldScrollY = getScrollY();//相对于原始坐标点已经偏移了的距离
+//               int scrollY= (int)(oldScrollY+dy);//这是本次需要偏离的距离
+//               if(scrollY<0){//如果滑动的距离小于0,说明最上面的已经到顶了,那么直接设置到顶的坐标,画布默认起止点为(0,0)
+//                    scrollY =0;
+//               }
+//               if(scrollY>realH-measureHeight){
+//                   scrollY=realH-measureHeight;
+//               }
+              // scrollTo(0,scrollY);//移动画布,到指定位置
 
-
+               //mScroller.startScroll(0,oldScrollY,0,(int)dy);//此次只是初始化,并不能立马执行,表示从什么地方开始滑动,到什么地方结束
+               mScroller.startScroll(0,mScroller.getFinalY(),0,(int)dy);//此次只是初始化,并不能立马执行,表示从什么地方开始滑动,到什么地方结束,mScroller.getFinalY()得到是前一次设置滑动后的坐标,不是现在滑动的距离
+               invalidate();//如果当前执行的时候还没画完,此次绘画就不执行,需要调用重绘,startScroll才会执行
+               mLastInterceptY =eventY;//上一次滑动的距离
                break;
            case MotionEvent.ACTION_UP:
                break;
@@ -136,6 +175,7 @@ public class FlowLayout extends ViewGroup {
        }
         return super.onTouchEvent(event);
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
