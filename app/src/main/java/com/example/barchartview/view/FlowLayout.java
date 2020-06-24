@@ -143,6 +143,8 @@ public class FlowLayout extends ViewGroup {
         }
         //初始化惯性对象
         initVelocityTracker();
+        //将事件加入速度处理器
+        mVelocityTracker.addMovement(event);
         float eventY = event.getY();
         switch (event.getAction()){
            case MotionEvent.ACTION_DOWN:
