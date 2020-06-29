@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import com.example.ScrollViewActivity;
 import com.example.barchartview.animation.FrameAnimatolActivity;
+import com.example.barchartview.canvas.CanvasStackView;
+import com.example.barchartview.canvas.CanvasTextView;
 
 public class MainActivity extends AppCompatActivity {
     private Button btEvent;
@@ -24,7 +26,11 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(MainActivity.this,FlowLayoutActivity.class));
         //startActivity(new Intent(MainActivity.this, ScrollViewActivity.class));
         //startActivity(new Intent(MainActivity.this, FrameAnimatolActivity.class));
-        startActivity(new Intent(MainActivity.this, CanvasActivity.class));
+        //startActivity(new Intent(MainActivity.this, CanvasActivity.class));
+        //startActivity(new Intent(MainActivity.this, TransformatActivity.class));
+        //startActivity(new Intent(MainActivity.this, CanvasStackActivity.class));
+        startActivity(new Intent(MainActivity.this, CanvasTextActivity.class));
+
 
 //        Animal a1 = new Animal("Lion");
 //        Animal a2 = new Animal("Crocodile");
@@ -70,7 +76,5 @@ public class MainActivity extends AppCompatActivity {
 //        return name;
 //    }
 //}
-
-
 
 }
