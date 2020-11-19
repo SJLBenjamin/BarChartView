@@ -168,7 +168,6 @@ public class CanvasTextView extends View {
         mPaint.setTextSize(Utils.dp2px(15));
         canvas.drawText("aaaa",0,Utils.dp2px(800) + mPaint.getFontSpacing(),mPaint);
 
-
     }
 
 }

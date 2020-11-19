@@ -42,12 +42,15 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.FruitHolder>
         /*
         * 此处需要拿到上下文,因为布局文件需要依附界面,所以需要通过parent.getContext()去得到依附的对象才能去解析布局
         *
-        *第二个参数表示当前解析布局要用到父控件
+        *第二个参数表示当前解析布局要用到父控件.子控件大小如果是match_parent等受父控件影响的,那么必须设置父控件,否则会导致问题
         *
-        * 第三个参数表示是否将当前布局添加到父布局中去,如果添加,那么返回的view就是父View,当前布局在此父view中,如果不添加,那么父view只是作为父控件的参数给子控件,返回的子控件
+        *第三个参数表示是否将当前布局添加到父布局中去,如果添加,那么返回的view就是父View,当前布局在此父view中,如果不添加,那么父view只是作为父控件的参数给子控件,返回的子控件
         *
         */
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_layout, parent, false);
+
+        //View view = LayoutInflater.from(mContext).inflate(R.layout.bitmap_layout, null, false);
+
         return new FruitHolder(view);
     }
 

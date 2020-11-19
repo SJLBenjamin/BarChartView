@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.widget.Button;
 
 import com.example.ScrollViewActivity;
@@ -15,6 +16,9 @@ import com.example.barchartview.canvas.CanvasTextView;
 public class MainActivity extends AppCompatActivity {
     private Button btEvent;
     String TAG="totalMemory";
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(new Intent(MainActivity.this, CanvasActivity.class));
         //startActivity(new Intent(MainActivity.this, TransformatActivity.class));
         //startActivity(new Intent(MainActivity.this, CanvasStackActivity.class));
-        startActivity(new Intent(MainActivity.this, CanvasTextActivity.class));
+        //startActivity(new Intent(MainActivity.this, CanvasTextActivity.class));
 
 
 //        Animal a1 = new Animal("Lion");

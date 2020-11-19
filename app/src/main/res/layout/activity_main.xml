@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
   <com.example.barchartview.view.MyViewGroup
-
+android:visibility="gone"
       android:layout_width="match_parent"
       android:layout_height="500dp"
       >
@@ -17,11 +17,12 @@
           android:layout_height="300dp"/>
 
   </com.example.barchartview.view.MyViewGroup>
+
     <com.example.barchartview.view.MyView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
     <com.example.barchartview.view.SwipeCards
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.cardview.widget.CardView
