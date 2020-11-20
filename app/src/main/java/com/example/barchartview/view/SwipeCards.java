@@ -90,14 +90,20 @@ public class SwipeCards extends ViewGroup {
         //拖动的的View竖直方向的坐标
         @Override
         public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
-            return  top;
+           /* int size[] =new int[2];
+            child.getLocationInWindow(size);
+            int y = size[0];
+            int x =size[1];
+            Log.d(TAG, "clampViewPositionHorizontal:  x==" + x+"    y=="+y);*/
+            //return    (int) child.getY();//设置数值坐标就是控件的原始坐标,那么就拖不动了
+            return top;//拖动后将要生成的坐标
         }
 
         //view的位置移动
         @Override
         public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
             //Log.d(TAG, "onViewPositionChanged: " + left);
-            Log.d(TAG, " changedView.getWidth(): " +  changedView.getWidth());
+            //Log.d(TAG, " changedView.getWidth(): " +  changedView.getWidth());
             //计算位置改变后，与原来位置的中心点变化量
             int diffX = left + changedView.getWidth() / 2 - mCenterX;
             float ratio = diffX * 1.0f / getWidth();//计算偏移量相对于本身的宽度
